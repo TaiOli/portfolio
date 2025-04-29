@@ -125,7 +125,7 @@
             <i class="bi bi-linkedin fs-4"></i>
         </a>
 
-        <a href="https://github.com/seulink" target="_blank" class="btn btn-dark btn-github d-flex align-items-center justify-content-center rounded-circle">
+        <a href="https://github.com/TaiOli" target="_blank" class="btn btn-dark btn-github d-flex align-items-center justify-content-center rounded-circle">
             <i class="bi bi-github fs-4"></i>
         </a>
 
