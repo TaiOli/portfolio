@@ -10,3 +10,7 @@ Route::get('/cursos', function () {
     return view('courses');
 })->name('courses');
 
+Route::get('/projetos', function () {
+    return view('projetos');
+});
+

@@ -9,4 +9,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/projetos', [ProjetoController::class, 'index']);
+Route::get('/projetos', [ProjetoController::class, 'getProjetos']);

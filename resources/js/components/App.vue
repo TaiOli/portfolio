@@ -1,16 +1,33 @@
 <template>
-    <div>
-      <h3 class="text-center mb-4">Projetos</h3>
-      <ul class="list-group" v-if="projetos.length">
-        <li class="list-group-item" v-for="projeto in projetos" :key="projeto.id">
-          {{ projeto.nome }}
-        </li>
-      </ul>
-      <p v-else class="text-center">Carregando...</p>
+    <div class="container bg-light mt-5">
+      <div class="row">
+        <div class="col-md-4 mb-4" v-for="projeto in projetos" :key="projeto.id">
+          <div class="card mb-3">
+
+            <div class="card-body">
+              <h5 class="card-title">{{ projeto.nome }}</h5>
+            </div>
+            
+            <div class="card-body">
+              <p><strong>Descrição:</strong></p>
+              <p v-if="projeto.descricao">{{ projeto.descricao }}</p>
+              <p>
+                <strong>Linguagem:</strong> {{ projeto.linguagem ?? 'Não especificada' }}
+              </p>
+              <a :href="projeto.url" class="btn btn-sm btn-primary" target="_blank">
+                Ver no GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p v-if="projetos.length === 0" class="text-center">Carregando projetos...</p>
     </div>
   </template>
   
-  <script>
+  
+<script>
 export default {
 	data() {
 		return {
@@ -22,6 +39,9 @@ export default {
 			.then((res) => res.json())
 			.then((data) => {
 				this.projetos = data;
+			})
+			.catch((error) => {
+				console.error("Erro ao carregar os projetos:", error);
 			});
 	},
 };
