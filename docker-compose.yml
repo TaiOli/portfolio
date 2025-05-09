@@ -14,6 +14,10 @@ services:
       DB_DATABASE: portfolio
       DB_USERNAME: root
       DB_PASSWORD: nova_senha
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel-network
 
   db:
     image: mysql:5.7
@@ -23,6 +27,12 @@ services:
       MYSQL_ROOT_PASSWORD: nova_senha
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - laravel-network
 
 volumes:
   db_data:
+
+networks:
+  laravel-network:
+    driver: bridge
