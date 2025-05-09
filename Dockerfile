@@ -19,6 +19,22 @@ WORKDIR /var/www/html
 # Copia os arquivos do projeto para o contêiner
 COPY . .
 
+# Garantir permissões corretas para o Apache acessar os arquivos
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html
+
+# Configure Apache para apontar para o diretório public do Laravel
+RUN echo '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html/public\n\
+    <Directory /var/www/html/public>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+# Habilita mod_rewrite no Apache para o Laravel funcionar corretamente
+RUN a2enmod rewrite
+
 # Instala dependências do Laravel
 RUN composer install --no-dev --optimize-autoloader
 
