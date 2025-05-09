@@ -27,3 +27,6 @@ RUN cp .env.example .env && php artisan key:generate
 
 # Expondo porta do Apache
 EXPOSE 80
+
+# Comando para garantir a geração da chave sempre que o contêiner for iniciado
+CMD ["sh", "-c", "php artisan key:generate && apache2-foreground"]
