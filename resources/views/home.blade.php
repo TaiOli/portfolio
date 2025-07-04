@@ -101,7 +101,7 @@
 
                 <div>
                     <p class="mb-1"><strong>Desenvolvedora Web – Ke Solutions</strong></p>
-                    <p class="mb-1">Fevereiro de 2024 – Atualmente</p>
+                    <p class="mb-1">Fevereiro de 2024</p>
                     <ul class="mt-3">
                         <li>Desenvolvimento de APIs RESTful utilizando Laravel, implementando a arquitetura MVC.</li>
                         <li>Modelagem e gerenciamento de banco de dados MySQL.</li>

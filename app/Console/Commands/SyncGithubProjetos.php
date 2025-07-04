@@ -8,8 +8,8 @@ use App\Models\Projeto;
 
 class SyncGithubProjetos extends Command
 {
-        protected $assinatura = 'github:sync-projetos';
-        protected $descricao = 'Sincroniza repositórios do GitHub com a tabela projetos';
+        protected $signature = 'github:sync-projetos';
+        protected $description = 'Sincroniza repositórios do GitHub com a tabela projetos';
     
         public function handle()
         {
