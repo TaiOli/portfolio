@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: portfolio
+      DB_USERNAME: root
+      DB_PASSWORD: nova_senha
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel-network
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: portfolio
+      MYSQL_ROOT_PASSWORD: nova_senha
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - laravel-network
+
+volumes:
+  db_data:
+
+networks:
+  laravel-network:
+    driver: bridge
